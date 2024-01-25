@@ -17,11 +17,13 @@ function Repo() {
               <div className="w-[550px] h-[150px] hover:-translate-y-0.5 cursor-pointer transition-all rounded-2xl repoBackground">
                 <div className="grid pl-5 pt-5 gap-y-2">
                   <div className="text-[#CDD5E0] text-[20px]">{data.name}</div>
-                  <div className="text-[#96A3B4] text-[15px]">
+                  <div className="text-[#96A3B4] w-[500px] text-[15px]">
                     {data.description === null ? (
                       <div>---</div>
                     ) : (
-                      data.description
+                      <div className="whitespace-nowrap overflow-hidden text-ellipsis">
+                        {data.description}
+                      </div>
                     )}
                   </div>
                 </div>
