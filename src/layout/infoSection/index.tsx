@@ -51,8 +51,8 @@ function InfoSection() {
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-center">
-        <div className="w-[1200px]">
+      <div className="w-full flex items-center justify-center mt-10">
+        <div className="w-[1200px] flex flex-wrap justify-between gap-y-10">
           <Repo />
         </div>
       </div>

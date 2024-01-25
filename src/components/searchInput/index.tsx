@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../store/data/hook"
 import { fetchUserData } from "../../store/data"
 import { _searcContext } from "../../store/searchState"
 import classnames from "classnames"
+import { fetchRepoData } from "../../store/repoData"
 
 interface Input {
   variant?: any
@@ -17,6 +18,7 @@ function SearchInput({ variant }: Input) {
     e.preventDefault()
 
     dispatch(fetchUserData(user))
+    dispatch(fetchRepoData(user))
   }
 
   return (
@@ -25,7 +27,7 @@ function SearchInput({ variant }: Input) {
       onSubmit={handleSubmit}
     >
       <input
-        placeholder="username"
+        placeholder="search github username"
         className={classnames(
           "bg-[#20293A] h-16 rounded-xl focus:ring-4 ring-blue-500 pl-[50px] placeholder:text-[#4A5567] flex items-center text-[17px] text-[#CDD5E0]",
           {

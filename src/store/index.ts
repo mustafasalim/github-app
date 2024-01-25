@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit"
 import dataContext from "./data"
 import searchStateAll from "./searchState"
+import repoData from "./repoData"
 // ...
 
 export const store = configureStore({
   reducer: {
     dataContext,
     searchStateAll,
+    repoData,
   },
 })
 

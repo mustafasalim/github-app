@@ -1,4 +1,5 @@
 import { useData } from "../store/data/hook"
+import { useRepo } from "../store/repoData/hook"
 import Header from "./header"
 import InfoSection from "./infoSection"
 import { message } from "antd"
@@ -22,10 +23,12 @@ function HomeLayout() {
     }, 1000)
   }
   const data = useData()
+  const repoData = useRepo()
 
   data.error === "errordata" && openMessage()
 
   console.log(data)
+  console.log(repoData)
 
   return (
     <section>

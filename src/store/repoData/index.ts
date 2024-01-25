@@ -2,15 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
 // Define a type for the slice state
-interface dataContextUser {
-  data: any
+interface dataContextRepo {
+  repoData: any
   loading: boolean
   error: string
 }
 
 // Define the initial state using that type
-const initialState: dataContextUser = {
-  data: [],
+const initialState: dataContextRepo = {
+  repoData: [],
   loading: false,
   error: "",
 }
@@ -18,28 +18,30 @@ interface usernameType {
   username: string
 }
 
-export const fetchUserData = createAsyncThunk(
-  "fetchUserData",
+export const fetchRepoData = createAsyncThunk(
+  "fetchRepoData",
   async (username: usernameType) => {
-    const response = await axios.get(`https://api.github.com/users/${username}`)
+    const response = await axios.get(
+      `https://api.github.com/users/${username}/repos`
+    )
     return response.data
   }
 )
 
-export const dataContext = createSlice({
-  name: "dataUser",
+export const repoData = createSlice({
+  name: "repo",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchUserData.pending, (state) => {
+    builder.addCase(fetchRepoData.pending, (state) => {
       state.loading = true
       state.error = ""
     })
-    builder.addCase(fetchUserData.fulfilled, (state, action) => {
-      state.data = action.payload
+    builder.addCase(fetchRepoData.fulfilled, (state, action) => {
+      state.repoData = action.payload
       state.error = ""
     })
-    builder.addCase(fetchUserData.rejected, (state) => {
+    builder.addCase(fetchRepoData.rejected, (state) => {
       state.loading = false
       state.error = "errordata"
     })
@@ -48,4 +50,4 @@ export const dataContext = createSlice({
 
 // Other code such as selectors can use the imported `RootState` type
 
-export default dataContext.reducer
+export default repoData.reducer
