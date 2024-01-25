@@ -1,16 +1,37 @@
 import { useData } from "../store/data/hook"
 import Header from "./header"
+import InfoSection from "./infoSection"
+import { message } from "antd"
 
 function HomeLayout() {
+  const [messageApi, contextHolder] = message.useMessage()
+  const key = "updatable"
+  const openMessage = () => {
+    messageApi.open({
+      key,
+      type: "loading",
+      content: "Loading...",
+    })
+    setTimeout(() => {
+      messageApi.open({
+        key,
+        type: "error",
+        content: "User not found",
+        duration: 2,
+      })
+    }, 1000)
+  }
   const data = useData()
-  console.log(data.data)
+
+  data.error === "errordata" && openMessage()
+
+  console.log(data)
 
   return (
     <section>
+      {contextHolder}
       <Header />
-      <div>
-        <div className="text-black">{data.data.avatar_url}</div>
-      </div>
+      <InfoSection />
     </section>
   )
 }

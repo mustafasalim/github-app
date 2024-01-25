@@ -27,14 +27,16 @@ function SearchInput({ variant }: Input) {
       <input
         placeholder="username"
         className={classnames(
-          "bg-[#20293A] h-16 rounded-xl pl-[50px] placeholder:text-[#4A5567] flex items-center text-[17px] text-[#CDD5E0]",
+          "bg-[#20293A] h-16 rounded-xl focus:ring-4 ring-blue-500 pl-[50px] placeholder:text-[#4A5567] flex items-center text-[17px] text-[#CDD5E0]",
           {
             "w-[200px]": variant === "small",
             "w-[300px]": variant === "default",
             "w-[500px]": variant === "large",
           }
         )}
-        onChange={(e: any) => dispatch(_searcContext(e.target.value))}
+        onChange={(e: any) =>
+          dispatch(_searcContext(e.target.value.toLowerCase()))
+        }
         type="text"
       />
       <svg

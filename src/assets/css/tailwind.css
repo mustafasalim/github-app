@@ -4,6 +4,13 @@
 
 
 html{
-    font-family: "Be Vietnam Pro", sans-serif;
+    
+    font-family: "Be Vietnam Pro", sans-serif ;
     background-color: #20293A;
+}
+
+.repoBackground{
+    background: rgb(17,23,41);
+background: linear-gradient(90deg, rgba(17,23,41,1) 0%, rgba(29,27,72,1) 100%);
+
 }

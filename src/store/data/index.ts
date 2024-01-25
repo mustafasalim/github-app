@@ -38,7 +38,7 @@ export const dataContext = createSlice({
     })
     builder.addCase(fetchUserData.rejected, (state) => {
       state.loading = false
-      state.error = "Error fetching data"
+      state.error = "errordata"
     })
   },
 })
