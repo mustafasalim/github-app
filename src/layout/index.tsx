@@ -1,5 +1,6 @@
 import { useData } from "../store/data/hook"
 import { useRepo } from "../store/repoData/hook"
+import Footer from "./footer"
 import Header from "./header"
 import InfoSection from "./infoSection"
 import { message } from "antd"
@@ -35,6 +36,7 @@ function HomeLayout() {
       {contextHolder}
       <Header />
       <InfoSection />
+      <Footer />
     </section>
   )
 }
